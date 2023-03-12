@@ -153,4 +153,9 @@ contract NpNFT is ERC1155URIStorage {
         require(tokenId_ > 0 && tokenId_ < nextTokenId, "NpNFT: invalid tokenId");
         return ownershipRecordsMap[tokenId_];
     }
+
+    function getLatestOwnershipRecordOf(uint256 tokenId_) external view returns (OwnershipRecord memory) {
+        require(tokenId_ > 0 && tokenId_ < nextTokenId, "NpNFT: invalid tokenId");
+        return ownershipRecordsMap[tokenId_][ownershipRecordsMap[tokenId_].length - 1];
+    }
 }
